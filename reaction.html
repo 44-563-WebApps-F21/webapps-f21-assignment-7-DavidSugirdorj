@@ -21,9 +21,9 @@
   <button type="button" class="btn btn-primary" onclick="recordReact()">React Now</button>
 
   <script>
-    let myTime = 0;
-    let buttonTime = 0;
-    let result = 0;
+    var myTime = 0;
+    var buttonTime = 0;
+    var result = 0;
 
     function recordReact() {
       myTime = Date.now();
@@ -32,7 +32,7 @@
 
     function startTime() {
       myTime = 0;
-      for (let i = 0; i <= 3; i++) {
+      for (var i = 0; i <= 3; i++) {
         setTimeout(function () {
             let x = document.getElementById("countdown");
             x.innerHTML = i;
@@ -42,20 +42,22 @@
 
       setTimeout(function () {
         if (myTime == 0) {
-          let y = document.getElementById("target");
+          var y = document.getElementById("target");
           y.innerHTML = "Too Slow";
+
         } else {
           buttonTime = Date.now();
+
           console.log('Button Time ' + buttonTime);
+
           result = buttonTime - myTime;
 
-          let target = document.getElementById("target");
+          var target = document.getElementById("target");
           target.innerHTML = ("Time was " + result + " ms")
         }
       }, 3000)
     }
   </script>
-
 </body>
 
 </html>

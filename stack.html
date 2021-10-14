@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Stacking</title>
+	<style>
+		.flex-container {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.flex-container>div {
+			/*div children of the flex container*/
+			background-color: #f1f1f1;
+			margin: 10px;
+			padding: 20px;
+			font-size: 30px;
+		}
+
+		/* Responsive layout */
+		@media (max-width: 600px) {
+			.flex-container {
+				flex-direction: column;
+				background-color: green;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Dagvadorj Builds a Stack</h1>
+
+	<input type="text" id="input">
+
+	<div class="flex-container" id="target">
+		<div class="stack">1</div>
+		<div class="stack">2</div>
+		<div class="stack">3</div>
+	</div>
+
+	<button onclick="makeNewDiv()">Push Value</button>
+	<button onclick="popItem()">Pop</button>
+	<button onclick="zap()">Zap values</button>
+
+
+</body>
+<script>
+	function zap() {
+		var stackItems = document.getElementsByClassName("stack");
+		var input = document.getElementById("input");
+
+		for (const item of stackItems) {
+			if (item.innerHTML == input.value) {
+				console.log("Removed: " + item.innerHTML);
+				item.remove();
+			}
+		}
+	}
+
+	function popItem() {
+		var stackItems = document.getElementsByClassName("stack");
+		var len = stackItems.length;
+		if (len != 0) {
+			stackItems[len - 1].remove();
+		}
+	}
+
+	function makeNewDiv() {
+		var element = document.createElement("div");
+		element.className = "stack";
+
+		var input = document.getElementById("input");
+		element.innerHTML = input.value;
+
+		document.getElementById("target").appendChild(element);
+		console.log(element);
+	}
+</script>
+
+</html>
